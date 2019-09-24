@@ -1,0 +1,16 @@
+/**
+Initializes the Kin Client with the playground environment.
+*/
+func initializeKinClientOnPlaygroundNetwork() -> KinClient? {
+    let url = "https://horizon-testnet.kininfrastructure.com"
+    guard let providerUrl = URL(string: url) else { return nil }
+
+    do {
+        let appId = try AppId("test")
+        return KinClient(with: providerUrl, network: .testNet, appId: appId)
+    }
+    catch let error {
+        print("Error \(error)")
+    }
+    return nil
+}
